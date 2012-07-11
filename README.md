@@ -4,6 +4,7 @@ From breaking news to status updates, things are happening in the world and peop
 
 It's time for something new - it's time for the Real-Time Web!
 
+[View the Live Site](http://jchadwick.github.com/RealTimeWeb)
 
 ## Demos
 
@@ -12,14 +13,14 @@ The following examples demostrate the various techniques for creating real-time 
 
 ### AJAX Techniques
 
-* [Polling](/RealTimeWeb/Polling.html)
-* [Long Polling](/RealTimeWeb/LongPolling.html)
-* [Server-Sent Events (aka "EventSource")](/RealTimeWeb/ServerSentEvents.html)
-* [WebSockets](/RealTimeWeb/WebSockets.html)
+* [Polling](https://github.com/jchadwick/RealTimeWeb/blob/master/Client/Polling.html)
+* [Long Polling](https://github.com/jchadwick/RealTimeWeb/blob/master/Client/LongPolling.html)
+* [Server-Sent Events (aka "EventSource")](https://github.com/jchadwick/RealTimeWeb/blob/master/Client/ServerSentEvents.html)
+* [WebSockets](https://github.com/jchadwick/RealTimeWeb/blob/master/Client/WebSockets.html)
 
 
 ### ASP.NET Tools
 
-* [Asynchronous HTTP Handlers](/RealTimeWeb/AsyncHttpHandler.html)
-* [Asynchronous Controllers (ASP.NET MVC)](/RealTimeWeb/AsyncController.html)
-* [SignalR](/RealTimeWeb/SignalR.html)
+* [Asynchronous HTTP Handlers](https://github.com/jchadwick/RealTimeWeb/blob/master/Client/AsyncHttpHandler.html)
+* [Asynchronous Controllers (ASP.NET MVC)](https://github.com/jchadwick/RealTimeWeb/blob/master/Client/AsyncController.html)
+* [SignalR](https://github.com/jchadwick/RealTimeWeb/blob/master/Client/SignalR.html)
