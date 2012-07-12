@@ -1,4 +1,4 @@
-@{ var serviceUrl = Url.Action("Index", "Newsfeed"); }
+@{ var serviceUrl = Url.Content("~/Handlers/NewsFeed.ashx"); }
 
 <h2>Real-Time Technique: Polling</h2>
 
@@ -18,7 +18,7 @@
 
 <section>
     <h3>Server-Side Code</h3>
-    @Html.RenderSourceCode("~/Controllers/NewsfeedController.cs")
+    @Html.RenderSourceCode("~/Handlers/NewsFeed.ashx")
 
     <h3>Client-Side Code</h3>
     <pre id="code"></pre>
@@ -26,8 +26,23 @@
 
 <script id="script-block" type="text/javascript">
     $(function () {
-        var demo = $('#demo');
+        var lastStory = 0;
         
+        function renderStories(stories) {
+            for (var i = 0; i < stories.length; i++) {
+                var story = stories[i];
+                var html =
+                    '<div class="story">' +
+                        '<p class="title">' + story.Id + ': <a href="' + story.Link + '">' + story.Title + '</a></p>' +
+                        '<p class="description">' + story.Description + '</p>' +
+                    '</div>';
+                $('#demo').prepend(html);
+                
+                if (lastStory < story.Id)
+                    lastStory = story.Id;
+            }
+        }
+
         function enabled(val) {
             return $('#enabled').text(val) == 'true';
         }
@@ -36,10 +51,8 @@
             if (!enabled())
                 return;
             
-            $.ajax('@serviceUrl')
-                .success(function (html) {
-                    demo.html(html);
-                })
+            $.ajax('@serviceUrl?last=' + lastStory)
+                .success(renderStories)
                 // Queue a new request (here's where the loop is!)
                 .complete(function () { setTimeout(updateTime, 10); });
         }

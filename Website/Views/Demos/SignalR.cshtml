@@ -27,11 +27,8 @@
 
 <script id="script-block" type="text/javascript">
     $(function () {
-        var demo = $('#demo');
-
-        var newsFeedHub = $.connection.newsFeedHub;
-
-        newsFeedHub.onNewStories = function(stories) {
+        
+        function renderStories(stories) {
             for (var i = 0; i < stories.length; i++) {
                 var story = stories[i];
                 var html =
@@ -39,9 +36,13 @@
                         '<p class="title">' + story.Id + ': <a href="' + story.Link + '">' + story.Title + '</a></p>' +
                         '<p class="description">' + story.Description + '</p>' +
                     '</div>';
-                demo.prepend(html);
+                $('#demo').prepend(html);
             }
-        };
+        }
+
+        var newsFeedHub = $.connection.newsFeedHub;
+
+        newsFeedHub.onNewStories = renderStories;
 
     @*  
         // Connection Notifications:

@@ -16,7 +16,10 @@ namespace RealTimeWeb.Handlers
         public IAsyncResult BeginProcessRequest(HttpContext context, AsyncCallback cb, object extraData)
         {
             return Task.Factory.StartNew(() => {
-                var stories = new NewsService().GetTopStories(context.Request["delay"]);
+                int last;
+                int.TryParse(context.Request["last"], out last);
+
+                var stories = new NewsService().GetTopStories(last, context.Request["delay"]);
 
                 context.Response.Clear();
                 context.Response.ContentType = "application/json";

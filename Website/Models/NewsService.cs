@@ -33,11 +33,11 @@ namespace RealTimeWeb.Models
             // we took a lot longer to get the data
             Thread.Sleep(TimeSpan.FromSeconds(delay.GetValueOrDefault()));
 
-            return stories.OrderByDescending(x => x.Id).Where(x => x.Id > lastStory);
+            return stories.Where(x => x.Id > lastStory).OrderBy(x => x.Id);
         }
 
 
-        public IEnumerable<NewsStory> GetTopStories(string delay)
+        public IEnumerable<NewsStory> GetTopStories(int lastStory, string delay)
         {
             int parsed = 0;
             if (!string.IsNullOrEmpty(delay) && int.TryParse(delay, out parsed))
