@@ -8,16 +8,12 @@
 </div>
 
 <section>
-    
-    <span>Started: <span id="enabled">false</span></span>
-    <button id="toggle-button">Start/Stop</button>
-
     <div id="demo"></div>
 </section>
 
 <section>
     <h3>Server-Side Code</h3>
-    @Html.RenderSourceCode("~/Handlers/NewsFeedLongPolling.ashx")
+    @Html.RenderSourceCode("~/Handlers/NewsFeedLongPolling.ashx.cs")
 
     <h3>Client-Side Code</h3>
     <pre id="code"></pre>
@@ -42,23 +38,15 @@
             }
         }
 
-        function enabled(val) {
-            return $('#enabled').text(val) == 'true';
-        }
-
         function updateTime() {
-            if (!enabled())
-                return;
-
             $.ajax('@serviceUrl?last=' + lastStory)
-                .success(renderStories)
-                // Queue a new request (here's where the loop is!)
-                .complete(function () { setTimeout(updateTime, 10); });
+                .success(function (stories) {
+                    renderStories(stories);
+                    // Queue a new request 
+                    updateTime();
+                });
         }
 
-        $('#toggle-button').click(function () {
-            enabled(!enabled());
-            updateTime();
-        });
+        updateTime();
     });
 </script>

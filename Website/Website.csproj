@@ -123,6 +123,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Handlers\NewsFeedServerSentEvents.ashx.cs">
+      <DependentUpon>NewsFeedServerSentEvents.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Handlers\NewsFeedLongPolling.ashx.cs">
       <DependentUpon>NewsFeedLongPolling.ashx</DependentUpon>
     </Compile>
@@ -172,6 +175,7 @@
     <Content Include="Handlers\NewsFeed.ashx" />
     <Content Include="Handlers\NewsFeedAsync.ashx" />
     <Content Include="Handlers\NewsFeedLongPolling.ashx" />
+    <Content Include="Handlers\NewsFeedServerSentEvents.ashx" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <None Include="Scripts\jquery-1.6.4-vsdoc.js" />
     <Content Include="Scripts\jquery-1.6.4.js" />

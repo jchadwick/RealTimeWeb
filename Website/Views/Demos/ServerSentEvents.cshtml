@@ -1,5 +1,58 @@
-<h2>Real-Time Technique: Server-Sent Events (aka "EventSource")</h2>
+@{ var serviceUrl = Url.Content("~/Handlers/NewsFeedLongServerSentEvents.ashx"); }
+
+<h2>Real-Time Technique: Server-Sent Events</h2>
 
 <div>
-    <strong>Coming soon!</strong>
+    <p><strong>Server-Sent Events</strong> connects to a server and gets a continuous stream of data as soon as it's available</p>
+    <p>The following demo calls <a href="@serviceUrl">@serviceUrl</a></p>
 </div>
+
+<section>
+    <div id="demo"></div>
+</section>
+
+<section>
+    <h3>Server-Side Code</h3>
+    @Html.RenderSourceCode("~/Handlers/NewsFeedLongServerSentEvents.ashx")
+
+    <h3>Client-Side Code</h3>
+    <pre id="code"></pre>
+</section>
+
+<script id="script-block" type="text/javascript">
+    $(function () {
+        var lastStory = 0;
+
+        function renderStories(stories) {
+            for (var i = 0; i < stories.length; i++) {
+                var story = stories[i];
+                var html =
+                    '<div class="story">' +
+                        '<p class="title">' + story.Id + ': <a href="' + story.Link + '">' + story.Title + '</a></p>' +
+                        '<p class="description">' + story.Description + '</p>' +
+                    '</div>';
+                $('#demo').prepend(html);
+
+                if (lastStory < story.Id)
+                    lastStory = story.Id;
+            }
+        }
+
+        var source = new EventSource('@serviceUrl?last=' + lastStory);
+
+        source.onopen = function (event) {
+            console.log('Connection Opened.');
+        };
+
+        source.onerror = function (event) {
+            if (event.eventPhase == EventSource.CLOSED) {
+                console.log('Connection Closed.');
+            }
+        };
+
+        source.onmessage = function (event) {
+            renderStories(event.data);
+        };
+
+    });
+</script>
