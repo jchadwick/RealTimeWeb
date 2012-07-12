@@ -10,6 +10,8 @@ namespace RealTimeWeb.Models
 {
     public class NewsService
     {
+        private static readonly object fileLock = new object();
+
         public volatile static string LocalCachedFilepath;
         public volatile static string FeedSourceUri;
 
@@ -51,7 +53,8 @@ namespace RealTimeWeb.Models
                 ReloadData();
             }
 
-            return XDocument.Load(LocalCachedFilepath);
+            lock (fileLock)
+                return XDocument.Load(LocalCachedFilepath);
         }
 
         public void ReloadData()

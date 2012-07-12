@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Web.Mvc;
 using RealTimeWeb.Models;
 
@@ -10,7 +8,7 @@ namespace RealTimeWeb.Controllers
     {
 /*
         // Non-Async Action
-        public ActionResult Index(int last = 0, int? delay = null)
+        public ActionResult Index()
         {
             var topStories = new NewsService().GetTopStories(last, delay);
             return PartialView("Stories", topStories);
@@ -18,29 +16,15 @@ namespace RealTimeWeb.Controllers
 */
 
         // Async Action
-        public Task<ActionResult> Index(int last = 0, int? delay = null)
+        public Task<ActionResult> Index()
         {
             return Task.Factory.StartNew<ActionResult>(() => {
-                var topStories = new NewsService().GetTopStories(last, delay);
+
+                var topStories = new NewsService().GetTopStories();
                 return PartialView("Stories", topStories);
+
             });
         }
-
-        public Task<ActionResult> LongPoll(int last = 0, int? delay = null)
-        {
-            return Task.Factory.StartNew<ActionResult>(() => {
-                var service = new NewsService();
-                IEnumerable<NewsStory> topStories;
-
-                do
-                {
-                    topStories = service.GetTopStories(last, delay);
-                } while (!topStories.Any());
-
-                return PartialView("Stories", topStories);
-            });
-        }
-
 
 
         public ActionResult Add(NewsStory story = null)
