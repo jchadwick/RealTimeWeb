@@ -194,13 +194,13 @@
       <DependentUpon>jquery.validate.unobtrusive.js</DependentUpon>
     </Content>
     <Content Include="Scripts\_references.js" />
-    <None Include="Views\Demos\AsyncController.cshtml" />
-    <None Include="Views\Demos\AsyncHttpHandler.cshtml" />
-    <None Include="Views\Demos\LongPolling.cshtml" />
-    <None Include="Views\Demos\Polling.cshtml" />
-    <None Include="Views\Demos\ServerSentEvents.cshtml" />
-    <None Include="Views\Demos\SignalR.cshtml" />
-    <None Include="Views\Demos\WebSockets.cshtml" />
+    <Content Include="Views\Demos\AsyncController.cshtml" />
+    <Content Include="Views\Demos\AsyncHttpHandler.cshtml" />
+    <Content Include="Views\Demos\LongPolling.cshtml" />
+    <Content Include="Views\Demos\Polling.cshtml" />
+    <Content Include="Views\Demos\ServerSentEvents.cshtml" />
+    <Content Include="Views\Demos\SignalR.cshtml" />
+    <Content Include="Views\Demos\WebSockets.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

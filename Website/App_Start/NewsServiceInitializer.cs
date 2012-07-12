@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Net;
 using RealTimeWeb.Models;
 
 namespace RealTimeWeb.App_Start
