@@ -125,6 +125,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Handlers\Clock.ashx.cs">
+      <DependentUpon>Clock.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\ClockAsync.ashx.cs">
+      <DependentUpon>ClockAsync.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Handlers\NewsFeedAsync.ashx.cs">
       <DependentUpon>NewsFeedAsync.ashx</DependentUpon>
     </Compile>
@@ -169,6 +175,8 @@
     <Content Include="Content\Site.css" />
     <Content Include="Handlers\NewsFeed.ashx" />
     <Content Include="Handlers\NewsFeedAsync.ashx" />
+    <Content Include="Handlers\Clock.ashx" />
+    <Content Include="Handlers\ClockAsync.ashx" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <None Include="Scripts\jquery-1.6.4-vsdoc.js" />
     <Content Include="Scripts\jquery-1.6.4.js" />
