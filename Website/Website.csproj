@@ -131,6 +131,7 @@
     <Compile Include="Handlers\NewsFeed.ashx.cs">
       <DependentUpon>NewsFeed.ashx</DependentUpon>
     </Compile>
+    <Compile Include="Hubs\NewsFeedHub.cs" />
     <Compile Include="Models\NewsService.cs" />
     <Compile Include="Models\NewsStory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,6 +1,53 @@
+<h2>ASP.NET Technique: SignalR</h2>
 
-      	<h2>ASP.NET Technique: SignalR</h2>
+<div>
+    <p><strong>SignalR</strong> is a client- and server-side library that helps abstract away all of the lower-level details of Real-Time Web!</p>
+    <p>The following demo connects to a SignalR Hub using the best possible method it can.</p>
+</div>
 
-      	<div>
-      		<strong>Coming soon!</strong>
-      	</div>
+<section>
+    <button id="add-story">Add Story</button>
+
+    <div id="demo"></div>
+</section>
+
+<section>
+    <pre id="code"></pre>
+</section>
+
+
+<script src="~/Scripts/jquery.signalR-0.5.2.min.js" type="text/javascript"></script>
+<script src="~/signalr/hubs" type="text/javascript"></script>
+
+<script id="script-block" type="text/javascript">
+    $(function () {
+        var demo = $('#demo');
+
+        var newsFeedHub = $.connection.newsFeedHub;
+
+        newsFeedHub.onNewStories = function(stories) {
+            for (var i = 0; i < stories.length; i++) {
+                var story = stories[i];
+                var html =
+                    '<div class="story">' +
+                        '<p class="title">' + story.Id + ': <a href="' + story.Link + '">' + story.Title + '</a></p>' +
+                        '<p class="description">' + story.Description + '</p>' +
+                    '</div>';
+                demo.prepend(html);
+            }
+        };
+
+    @*  
+        // Connection Notifications:
+        newsFeedHub.connect = function (connectionId) {
+            console.log('User ' + connectionId + ' connected!');
+        };
+
+        newsFeedHub.reconnect = function (connectionId) {
+            console.log('User ' + connectionId + ' reconnected!');
+        };
+    *@
+        // Start the connection!
+        $.connection.hub.start();
+    });
+</script>
