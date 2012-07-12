@@ -7,9 +7,48 @@
     @Styles.Render("~/Content/themes/base/css", "~/Content/css")
 </head>
 <body>
-    <h1>@ViewBag.Title</h1>
+    <div class="wrapper">
+        <header>
+            <h1><a href="~/">Developing Real-Time Websites</a></h1>
+            <p>Tips and tricks for the Real-Time Web</p>
+            <p class="view"><a href="https://github.com/jchadwick/RealTimeWeb">View the Project on GitHub <small>jchadwick/RealTimeWeb</small></a></p>
+            <ul>
+                <li><a href="https://github.com/jchadwick/RealTimeWeb/zipball/master">Download <strong>ZIP File</strong></a></li>
+                <li><a href="https://github.com/jchadwick/RealTimeWeb">View On <strong>GitHub</strong></a></li>
+            </ul>
+        </header>
 
-    @RenderBody()
+        <nav>
+            <h4>Demos</h4>
+            <fieldset>
+                <caption>AJAX Techniques</caption>
+                <ul>
+                    <li>@Html.ActionLink("Polling", "Polling", "Demos")</li>
+                    <li>@Html.ActionLink("Long Polling", "LongPolling", "Demos")</li>
+                    <li>@Html.ActionLink("Server-Sent Events  (aka \"EventSource\")", "ServerSentEvents", "Demos")</li>
+                    <li>@Html.ActionLink("WebSockets", "WebSockets", "Demos")</li>
+                </ul>
+            </fieldset>
+            
+            <fieldset>
+                <caption>ASP.NET Tools</caption>
+                <ul>
+                    <li>@Html.ActionLink("Asynchronous HTTP Handlers", "AsyncHttpHandler", "Demos")</li>
+                    <li>@Html.ActionLink("Asynchronous Controllers", "AsyncController", "Demos")</li>
+                    <li>@Html.ActionLink("SignalR", "SignalR", "Demos")</li>
+                </ul>
+            </fieldset>
+        </nav>
+
+        <section id="main">
+            @RenderBody()
+        </section>
+    </div>
+
+    <footer>
+        <p>Project maintained by <a href="https://github.com/jchadwick">Jess Chadwick</a></p>
+        <p>Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+    </footer>
 
     @Scripts.Render("~/bundles/jquery")
     @RenderSection("scripts", required: false)
