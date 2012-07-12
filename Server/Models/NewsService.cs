@@ -1,17 +1,18 @@
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading;
-using System.Web;
 using System.Xml.Linq;
 
 namespace RealTimeWeb.Models
 {
     public class NewsService
     {
+        private static string LocalFilePath = ConfigurationManager.AppSettings["LocalFilePath"];
         private const string RemoteFilePath = "http://rss.cnn.com/rss/cnn_topstories.rss";
-        private static string LocalFilePath = HttpContext.Current.Server.MapPath("~/App_Data/top-stories.rss");
 
         public IEnumerable<NewsStory> GetTopStories(int? delay = null)
         {
@@ -43,10 +44,12 @@ namespace RealTimeWeb.Models
 
         private static XDocument GetRssFeed()
         {
+            // "Cache" a local copy
             if (!File.Exists(LocalFilePath))
             {
                 var feed = XDocument.Load(RemoteFilePath);
                 feed.Save(LocalFilePath);
+                Trace.WriteLine("Saved RSS feed to " + LocalFilePath);
                 return feed;
             }
 
