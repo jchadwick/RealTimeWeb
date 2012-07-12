@@ -10,7 +10,7 @@ namespace RealTimeWeb.App_Start
             // Prime the cache
             NewsService.LocalCachedFilepath = resolveUrl("~/App_Data/top-stories.rss");
             NewsService.FeedSourceUri = "http://rss.cnn.com/rss/cnn_topstories.rss";
-            new NewsService().RefreshData();
+            new NewsService().ReloadData();
         }
     }
 }

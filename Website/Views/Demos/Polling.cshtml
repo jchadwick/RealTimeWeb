@@ -1,13 +1,19 @@
+@{ var serviceUrl = Url.Action("Index", "Newsfeed"); }
+
 <h2>Real-Time Technique: Polling</h2>
 
 <div>
     <p><strong>Polling</strong> makes a continuous stream of requests to a resource, hoping that it's changed</p>
-    <p>The following demo calls <a href="@Url.Content("~/Handlers/Clock.ashx")">@Url.Content("~/Handlers/Clock.ashx")</a> every 10 milliseconds</p>
+    <p>The following demo calls <a href="@serviceUrl">@serviceUrl</a> every 10 milliseconds</p>
 </div>
 
 <section>
-    <div id="demo"></div>
+    
+    <span>Started: <span id="enabled">false</span></span>
     <button id="toggle-button">Start/Stop</button>
+    <button id="add-story">Add Story</button>
+
+    <div id="demo"></div>
 </section>
 
 <section>
@@ -16,28 +22,26 @@
 
 <script id="script-block" type="text/javascript">
     $(function () {
-        var enabled = false;
         var demo = $('#demo');
+        
+        function enabled(val) {
+            return $('#enabled').text(val) == 'true';
+        }
 
         function updateTime() {
-            if(!enabled)
+            if (!enabled())
                 return;
             
-            $.ajax('@Url.Content("~/Handlers/ClockAsync.ashx")')
-                .success(function (ticks) {
-                    var time = new Date(ticks);
-                    demo.text(time.toDateString() + ' ' +
-                              time.getHours() + ':' +
-                              time.getMinutes() + ':' +
-                              time.getSeconds() + ':' +
-                              time.getMilliseconds());
+            $.ajax('@serviceUrl')
+                .success(function (html) {
+                    demo.html(html);
                 })
                 // Queue a new request (here's where the loop is!)
                 .complete(function () { setTimeout(updateTime, 10); });
         }
 
         $('#toggle-button').click(function() {
-            enabled = !enabled;
+            enabled(!enabled());
             updateTime();
         });
     });

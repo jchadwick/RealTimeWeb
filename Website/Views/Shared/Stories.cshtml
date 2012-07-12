@@ -1,16 +1,11 @@
 ﻿@model IEnumerable<RealTimeWeb.Models.NewsStory>
 
-<h2>Top Stories</h2>
-
-<section class="stories">
-    
 @foreach (var item in Model) {
     <div class="story">
-        <p class="title"><a href="@Html.Raw(item.Link)">@Html.Raw(item.Title)</a></p>
+        <p class="title">@item.Id: <a href="@Html.Raw(item.Link)">@Html.Raw(item.Title)</a></p>
         <p class="description">
             @Html.Raw(item.Description)
         </p>
     </div>   
 }
     
-</section>

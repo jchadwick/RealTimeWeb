@@ -55,6 +55,9 @@
     <script type="text/javascript">
         $(function () {
             $('#code').text($('#script-block').html());
+            $('#add-story').click(function() {
+                $.ajax('@Url.Action("Add", "NewsFeed")');
+            });
         });
     </script>
 </body>
