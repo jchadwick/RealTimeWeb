@@ -7,21 +7,20 @@ namespace RealTimeWeb.Controllers
     // http://msdn.microsoft.com/en-us/library/ee728598.aspx
     public class NewsFeedController : AsyncController
     {
+        public ActionResult Index()
+        {
+            return RedirectToAction("TopStories");
+        }
+
         public ActionResult TopStories()
         {
             return GetTopStoriesResult();
         }
 
-        public async Task<ActionResult> TopStoriesWithAsync()
-        {
-            var service = new NewsService();
-            await service.GetTopStoriesAsync();
-        }
-
         private ActionResult GetTopStoriesResult()
         {
             var service = new NewsService();
-            var topStories = await service.GetTopStoriesAsync();
+            var topStories = service.GetTopStories();
 
             var format = Request["format"];
 
