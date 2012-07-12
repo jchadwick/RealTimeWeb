@@ -3,7 +3,8 @@ using RealTimeWeb.Models;
 
 namespace RealTimeWeb.Controllers
 {
-    public class NewsFeedController : Controller
+    // http://msdn.microsoft.com/en-us/library/ee728598.aspx
+    public class NewsFeedAsyncController : AsyncController
     {
         public ActionResult Index(string format = null, int? delay = null)
         {

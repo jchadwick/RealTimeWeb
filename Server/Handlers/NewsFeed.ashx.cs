@@ -11,7 +11,7 @@ namespace RealTimeWeb.Handlers
         public void ProcessRequest(HttpContext context)
         {
             var service = new NewsService();
-            var stories = service.GetTopStories();
+            var stories = service.GetTopStories(context.Request["delay"]);
 
             context.Response.Clear();
             context.Response.ContentType = "application/json";

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
 using Newtonsoft.Json;
@@ -16,7 +17,7 @@ namespace RealTimeWeb.Handlers
         public IAsyncResult BeginProcessRequest(HttpContext context, AsyncCallback cb, object extraData)
         {
             return Task.Factory.StartNew(() => {
-                var stories = new NewsService().GetTopStories();
+                var stories = new NewsService().GetTopStories(context.Request["delay"]);
 
                 context.Response.Clear();
                 context.Response.ContentType = "application/json";

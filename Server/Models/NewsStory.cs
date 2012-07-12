@@ -1,6 +1,4 @@
-﻿using System.Threading.Tasks;
-
-namespace RealTimeWeb.Models
+﻿namespace RealTimeWeb.Models
 {
     public class NewsStory
     {
