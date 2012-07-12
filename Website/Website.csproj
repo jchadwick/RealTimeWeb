@@ -20,6 +20,8 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -113,8 +115,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\NewsServiceInitializer.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\DemosController.cs" />
     <Compile Include="Controllers\NewsFeedAsyncController.cs" />
     <Compile Include="Controllers\NewsFeedController.cs">
       <SubType>Code</SubType>
@@ -191,6 +194,13 @@
       <DependentUpon>jquery.validate.unobtrusive.js</DependentUpon>
     </Content>
     <Content Include="Scripts\_references.js" />
+    <None Include="Views\Demos\AsyncController.cshtml" />
+    <None Include="Views\Demos\AsyncHttpHandler.cshtml" />
+    <None Include="Views\Demos\LongPolling.cshtml" />
+    <None Include="Views\Demos\Polling.cshtml" />
+    <None Include="Views\Demos\ServerSentEvents.cshtml" />
+    <None Include="Views\Demos\SignalR.cshtml" />
+    <None Include="Views\Demos\WebSockets.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -203,7 +213,7 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\Stories.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Demos\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -239,6 +249,7 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

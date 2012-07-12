@@ -1,28 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server", "Server\Server.csproj", "{4EBB130D-BA20-41EE-B73C-97BC7123672C}"
-EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Client", "http://localhost:53783", "{B4315B76-9DE5-4EE1-8601-6F40EAF3F13D}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Debug.AspNetCompiler.FixedNames = "false"
-		Debug.AspNetCompiler.ForceOverwrite = "true"
-		Debug.AspNetCompiler.PhysicalPath = "Client\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\Client\"
-		Debug.AspNetCompiler.Updateable = "true"
-		Debug.AspNetCompiler.VirtualPath = "/Client"
-		Release.AspNetCompiler.Debug = "False"
-		Release.AspNetCompiler.FixedNames = "false"
-		Release.AspNetCompiler.ForceOverwrite = "true"
-		Release.AspNetCompiler.PhysicalPath = "Client\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\Client\"
-		Release.AspNetCompiler.Updateable = "true"
-		Release.AspNetCompiler.VirtualPath = "/Client"
-		SlnRelativePath = "Client\"
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
-		UseIISExpress = "true"
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Website", "Website\Website.csproj", "{4EBB130D-BA20-41EE-B73C-97BC7123672C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{0B1F3413-1318-4181-BB44-665D80BE3938}"
 	ProjectSection(SolutionItems) = preProject
@@ -40,10 +19,6 @@ Global
 		{4EBB130D-BA20-41EE-B73C-97BC7123672C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4EBB130D-BA20-41EE-B73C-97BC7123672C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4EBB130D-BA20-41EE-B73C-97BC7123672C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B4315B76-9DE5-4EE1-8601-6F40EAF3F13D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B4315B76-9DE5-4EE1-8601-6F40EAF3F13D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B4315B76-9DE5-4EE1-8601-6F40EAF3F13D}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{B4315B76-9DE5-4EE1-8601-6F40EAF3F13D}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
