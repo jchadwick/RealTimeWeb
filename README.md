@@ -4,7 +4,7 @@ From breaking news to status updates, things are happening in the world and peop
 
 It's time for something new - it's time for the Real-Time Web!
 
-[View the Live Site](http://jchadwick.github.com/RealTimeWeb)
+[View the Live Site](http://realtime.apphb.com)
 
 ## Demos
 
